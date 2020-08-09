@@ -1,0 +1,194 @@
+local Megafunobby = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Currentstage = Instance.new("TextBox")
+local Endstage = Instance.new("TextBox")
+local stageskip = Instance.new("TextButton")
+local delkill = Instance.new("TextButton")
+local respawn = Instance.new("TextButton")
+--Properties:
+Megafunobby.Name = "Megafunobby"
+Megafunobby.Parent = game.CoreGui
+Megafunobby.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = Megafunobby
+MainFrame.Active = true
+MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+MainFrame.Position = UDim2.new(0.557481825, 0, 0.101475962, 0)
+MainFrame.Size = UDim2.new(0, 251, 0, 153)
+
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.Position = UDim2.new(-0.000621557236, 0, -0.000108540058, 0)
+Title.Size = UDim2.new(0, 251, 0, 50)
+Title.Font = Enum.Font.SourceSansSemibold
+Title.Text = "RedWire's Mega Fun Obby GUI"
+Title.TextColor3 = Color3.new(0, 0, 0)
+Title.TextScaled = true
+Title.TextSize = 14
+Title.TextWrapped = true
+
+Currentstage.Name = "Currentstage"
+Currentstage.Parent = MainFrame
+Currentstage.BackgroundColor3 = Color3.new(1, 1, 1)
+Currentstage.Position = UDim2.new(0, 0, 0.320261449, 0)
+Currentstage.Size = UDim2.new(0, 127, 0, 34)
+Currentstage.Font = Enum.Font.Cartoon
+Currentstage.PlaceholderColor3 = Color3.new(0, 0, 0)
+Currentstage.PlaceholderText = "Current Stage Number here"
+Currentstage.Text = ""
+Currentstage.TextColor3 = Color3.new(0, 0, 0)
+Currentstage.TextScaled = true
+Currentstage.TextSize = 14
+Currentstage.TextWrapped = true
+
+Endstage.Name = "Endstage"
+Endstage.Parent = MainFrame
+Endstage.BackgroundColor3 = Color3.new(1, 1, 1)
+Endstage.Position = UDim2.new(0.505976081, 0, 0.320261449, 0)
+Endstage.Size = UDim2.new(0, 123, 0, 34)
+Endstage.Font = Enum.Font.Cartoon
+Endstage.PlaceholderColor3 = Color3.new(0, 0, 0)
+Endstage.PlaceholderText = "End Stage Number Here"
+Endstage.Text = ""
+Endstage.TextColor3 = Color3.new(0, 0, 0)
+Endstage.TextScaled = true
+Endstage.TextSize = 14
+Endstage.TextWrapped = true
+
+stageskip.Name = "stageskip"
+stageskip.Parent = MainFrame
+stageskip.BackgroundColor3 = Color3.new(1, 1, 1)
+stageskip.Position = UDim2.new(0, 0, 0.784313738, 0)
+stageskip.Size = UDim2.new(0, 90, 0, 33)
+stageskip.Font = Enum.Font.Code
+stageskip.Text = "Skip to end"
+stageskip.TextColor3 = Color3.new(0, 0, 0)
+stageskip.TextScaled = true
+stageskip.TextSize = 14
+stageskip.TextWrapped = true
+
+delkill.Name = "delkill"
+delkill.Parent = MainFrame
+delkill.BackgroundColor3 = Color3.new(1, 1, 1)
+delkill.Position = UDim2.new(0.358565748, 0, 0.784313738, 0)
+delkill.Size = UDim2.new(0, 82, 0, 33)
+delkill.Font = Enum.Font.Code
+delkill.Text = "Delete kill objects"
+delkill.TextColor3 = Color3.new(0, 0, 0)
+delkill.TextScaled = true
+delkill.TextSize = 14
+delkill.TextWrapped = true
+
+respawn.Name = "respawn"
+respawn.Parent = MainFrame
+respawn.BackgroundColor3 = Color3.new(1, 1, 1)
+respawn.Position = UDim2.new(0.685258985, 0, 0.784313738, 0)
+respawn.Size = UDim2.new(0, 79, 0, 33)
+respawn.Font = Enum.Font.Code
+respawn.Text = "Respawn"
+respawn.TextColor3 = Color3.new(0, 0, 0)
+respawn.TextScaled = true
+respawn.TextSize = 14
+respawn.TextWrapped = true
+-- Scripts:
+function SCRIPT_EMAK78_FAKESCRIPT() -- Currentstage.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = Currentstage
+    local stage = game.Players.LocalPlayer.leaderstats.Stage
+	script.Parent.Text = stage.Value
+    stage.Changed:connect(function()
+    script.Parent.Text = stage.Value
+    end)
+
+end
+coroutine.resume(coroutine.create(SCRIPT_EMAK78_FAKESCRIPT))
+function SCRIPT_EHCG72_FAKESCRIPT() -- Endstage.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = Endstage
+	local mps = game:GetService("MarketplaceService")
+	
+	local GetName, gamename = pcall(mps.GetProductInfo, mps, game.PlaceId)
+	if GetName then
+		namestring = gamename.Name
+		namestring = namestring:gsub("Mega Fun Obby 2", "oof")
+		maxstagenum = string.match(
+			namestring,
+		"%d+")
+		script.Parent.Text = maxstagenum
+	end
+
+end
+coroutine.resume(coroutine.create(SCRIPT_EHCG72_FAKESCRIPT))
+function SCRIPT_PFMH88_FAKESCRIPT() -- stageskip.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = stageskip
+	script.Parent.MouseButton1Down:connect(function()
+		local start = script.Parent.Parent.Currentstage
+		local endstage = script.Parent.Parent.Endstage
+		for i = tonumber(start.Text), tonumber(endstage.Text) do
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.stages[i].CFrame
+			wait(0.2)
+		end
+	end)
+
+end
+coroutine.resume(coroutine.create(SCRIPT_PFMH88_FAKESCRIPT))
+function SCRIPT_LBRZ77_FAKESCRIPT() -- MainFrame.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = MainFrame
+	MainFrame.Draggable = true
+
+end
+coroutine.resume(coroutine.create(SCRIPT_LBRZ77_FAKESCRIPT))
+function SCRIPT_XLWT90_FAKESCRIPT() -- delkill.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = delkill
+	script.Parent.MouseButton1Down:connect(function()
+	for i, kill in ipairs(workspace.kill:GetChildren()) do
+	if kill:IsA("BasePart") then
+		if kill.Transparency ~= 1 then
+			kill:Destroy()
+		end
+	end
+end
+	end)
+
+end
+coroutine.resume(coroutine.create(SCRIPT_XLWT90_FAKESCRIPT))
+function SCRIPT_PFQI83_FAKESCRIPT() -- respawn.LocalScript 
+	local script = Instance.new('LocalScript')
+	script.Parent = respawn
+	script.Parent.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.Humanoid.Health = 0
+	end)
+
+end
+coroutine.resume(coroutine.create(SCRIPT_PFQI83_FAKESCRIPT))
+local lplr = game.Players.LocalPlayer
+local plrgui = lplr.PlayerGui
+local hrp = lplr.Character.HumanoidRootPart
+if game.PlaceId == 12996397 then
+plrgui.Chat.Frame.Changed:connect(function()
+if plrgui.Chat.Frame.Visible ~= true then
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
+end
+end)
+local skip = plrgui.MFO_UI.Groundbar.SKIPS
+skip.RemainT.Text = "SKIPS LEFT : inf"
+plrgui.Note.Contents.Info_Skip:Destroy()
+skip.SELECT.MouseButton1Down:connect(function()
+hrp.CFrame = workspace.stages[lplr.leaderstats.Stage.Value + 1].CFrame
+end)
+elseif game.PlaceId == 982130670 then
+local f = plrgui.HUD.skipsLabel
+local skips = f:Clone()
+skips.Parent = f.Parent
+f:Destroy()
+skips.Text = "Skips Left: inf"
+skips.MouseButton1Down:connect(function()
+hrp.CFrame = workspace.stages[lplr.leaderstats.Stage.Value + 1].CFrame
+end)
+end
