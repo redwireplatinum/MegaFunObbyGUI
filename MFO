@@ -1,3 +1,4 @@
+if game.PlaceId == 12996397 or game.PlaceId == 982130670 then
 local Megafunobby = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local Title = Instance.new("TextLabel")
@@ -191,4 +192,5 @@ skips.Text = "Skips Left: inf"
 skips.MouseButton1Down:connect(function()
 hrp.CFrame = workspace.stages[lplr.leaderstats.Stage.Value + 1].CFrame
 end)
+end
 end
