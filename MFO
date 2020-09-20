@@ -126,7 +126,7 @@ coroutine.resume(coroutine.create(SCRIPT_EHCG72_FAKESCRIPT))
 function SCRIPT_PFMH88_FAKESCRIPT() -- stageskip.LocalScript 
 	local script = Instance.new('LocalScript')
 	script.Parent = stageskip
-	script.Parent.MouseButton1Down:connect(function()
+	script.Parent.MouseButton1Click:connect(function()
 		local start = script.Parent.Parent.Currentstage
 		local endstage = script.Parent.Parent.Endstage
 		for i = tonumber(start.Text), tonumber(endstage.Text) do
@@ -147,7 +147,7 @@ coroutine.resume(coroutine.create(SCRIPT_LBRZ77_FAKESCRIPT))
 function SCRIPT_XLWT90_FAKESCRIPT() -- delkill.LocalScript 
 	local script = Instance.new('LocalScript')
 	script.Parent = delkill
-	script.Parent.MouseButton1Down:connect(function()
+	script.Parent.MouseButton1Click:connect(function()
 	for i, kill in ipairs(workspace.kill:GetChildren()) do
 	if kill:IsA("BasePart") then
 		if kill.Transparency ~= 1 then
@@ -162,7 +162,7 @@ coroutine.resume(coroutine.create(SCRIPT_XLWT90_FAKESCRIPT))
 function SCRIPT_PFQI83_FAKESCRIPT() -- respawn.LocalScript 
 	local script = Instance.new('LocalScript')
 	script.Parent = respawn
-	script.Parent.MouseButton1Down:connect(function()
+	script.Parent.MouseButton1Click:connect(function()
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end)
 
@@ -180,7 +180,7 @@ end)
 local skip = plrgui.MFO_UI.Groundbar.SKIPS
 skip.RemainT.Text = "SKIPS LEFT : inf"
 plrgui.Note.Contents.Info_Skip:Destroy()
-skip.SELECT.MouseButton1Down:connect(function()
+skip.SELECT.MouseButton1Click:connect(function()
 hrp.CFrame = workspace.stages[lplr.leaderstats.Stage.Value + 1].CFrame
 end)
 elseif game.PlaceId == 982130670 then
@@ -189,7 +189,7 @@ local skips = f:Clone()
 skips.Parent = f.Parent
 f:Destroy()
 skips.Text = "Skips Left: inf"
-skips.MouseButton1Down:connect(function()
+skips.MouseButton1Click:connect(function()
 hrp.CFrame = workspace.stages[lplr.leaderstats.Stage.Value + 1].CFrame
 end)
 end
